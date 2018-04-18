@@ -19,7 +19,7 @@ const onSocketConnect = io => socket => {
             if (typeof ack === 'function') {
                 ack(true);
             }
-            socket.broadcast.emit(UPDATE_USER_LIST, db.all());
+            io.emit(UPDATE_USER_LIST, db.all());
         }
     });
     // TODO 2.4 Listen for "disconnect" events and remove the socket user from the users object (*hint: db.create(username, socket.id) returns the logout fn)
